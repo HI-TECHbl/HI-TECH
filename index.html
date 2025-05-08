@@ -1,54 +1,60 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <title>Moj AI Chatbot</title>
-  <style>
-    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
-    #chatbox { width: 100%; max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
-    textarea { width: 100%; height: 60px; }
-    button { padding: 10px 20px; margin-top: 10px; }
-    .message { margin: 10px 0; }
-    .user { color: blue; }
-    .bot { color: green; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HI-TECH | Sistemi i Instalacije</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+        header { background: #1e1e1e; color: white; padding: 20px; text-align: center; }
+        header img { max-width: 120px; display: block; margin: 0 auto 10px auto; }
+        nav { background: #333; color: white; text-align: center; padding: 10px 0; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        section { padding: 20px; max-width: 1000px; margin: auto; background: white; margin-top: 20px; border-radius: 8px; }
+        footer { background: #1e1e1e; color: white; text-align: center; padding: 15px; margin-top: 20px; }
+        h2 { color: #1e1e1e; }
+    </style>
 </head>
 <body>
-  <div id="chatbox">
-    <h2>AI Chatbot</h2>
-    <div id="messages"></div>
-    <textarea id="userInput" placeholder="Napiši poruku..."></textarea>
-    <button onclick="sendMessage()">Pošalji</button>
-  </div>
 
-  <script>
-    async function sendMessage() {
-      const input = document.getElementById("userInput").value;
-      if (!input) return;
+<header>
+    <img src="logo.png" alt="HI-TECH Logo">
+    <h1>HI-TECH</h1>
+    <p>Instalacija video nadzora, vatrodojave i elektroinstalacija</p>
+</header>
 
-      const messagesDiv = document.getElementById("messages");
-      messagesDiv.innerHTML += `<div class="message user"><b>Ti:</b> ${input}</div>`;
+<nav>
+    <a href="#onama">O nama</a>
+    <a href="#usluge">Usluge</a>
+    <a href="#kontakt">Kontakt</a>
+</nav>
 
-      document.getElementById("userInput").value = "";
+<section id="onama">
+    <h2>O nama</h2>
+    <p>HI-TECH je firma specijalizovana za ugradnju i održavanje sistema tehničke zaštite. Pružamo profesionalne usluge instalacije sistema video nadzora, vatrodojave i elektroinstalacija. Naš cilj je sigurnost i zadovoljstvo klijenata.</p>
+</section>
 
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer TVOJ_API_KLJUČ" // OVDE STAVI SVOJ API KLJUČ
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: input }]
-        })
-      });
+<section id="usluge">
+    <h2>Naše usluge</h2>
+    <ul>
+        <li>Ugradnja sistema video nadzora (CCTV)</li>
+        <li>Instalacija sistema za dojavu požara (vatrodojava)</li>
+        <li>Elektroinstalacije u stambenim i poslovnim objektima</li>
+        <li>Održavanje i servis sigurnosnih sistema</li>
+    </ul>
+</section>
 
-      const data = await response.json();
-      const reply = data.choices[0].message.content;
+<section id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Telefon: +381 60 123 4567</p>
+    <p>Email: kontakt@hi-tech.rs</p>
+    <p>Lokacija: Beograd, Srbija</p>
+</section>
 
-      messagesDiv.innerHTML += `<div class="message bot"><b>AI:</b> ${reply}</div>`;
-    }
-  </script>
+<footer>
+    <p>&copy; 2025 HI-TECH. Sva prava zadržana.</p>
+</footer>
+
 </body>
 </html>
